@@ -6,7 +6,7 @@ public class sikulix {
     public static void main(String[] args) throws FindFailed, InterruptedException {
 
         Screen sc = new Screen();
-        Pattern image = new Pattern("/Users/guilhermerogatto/Documents/git/sikulix-tdc/src/main/resources/imgs/spotify2.png");
+        Pattern image = new Pattern("/Users/guilhermerogatto/Documents/git/sikulix-tdc/src/main/resources/imgs/teste_fotor.png");
         System.out.println(image.getFilename());
 
         if(image.isValid()){
@@ -20,8 +20,6 @@ public class sikulix {
         sc.click(image);
 
         //sc.capture();
-
-        //sc.saveCapture("teste de captura");
 
         /* montar exemplo de match de imagem
            sc.compare();
