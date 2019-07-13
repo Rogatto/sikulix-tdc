@@ -11,22 +11,21 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.sikuli.script.FindFailed;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
-import pageobject.Login;
-
-import java.io.IOException;
-import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class TestGoogle {
 
     private WebDriver driver;
-    private String baseUrl = "https://www.google.com.br/";
-    private Screen screen;
+    private String baseUrl;
     private String testContext;
 
     @Before
-    public void setUp() throws IOException {
+    public void setUp() {
+
+        baseUrl = "https://www.google.com.br/";
+
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
@@ -41,49 +40,9 @@ public class TestGoogle {
     }
 
     @Test
-    public void testFunctional() throws InterruptedException, FindFailed {
+    public void testFunctionalAndVisual() throws FindFailed {
 
-        driver.get(baseUrl);
-
-        By imagemGoogle = By.id("hplogo");
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(imagemGoogle));
-
-        if(driver.findElements(imagemGoogle).isEmpty()){
-            assertTrue(false);
-        } else {
-            assertTrue(true);
-        }
-    }
-
-    @Test
-    public void testVisual() throws InterruptedException, FindFailed {
-
-        driver.get(baseUrl);
-
-        By imagemGoogle = By.id("hplogo");
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(imagemGoogle));
-
-        screen = new Screen();
-        Pattern image = new Pattern("/Users/guilhermerogatto/Documents/git/sikulix-tdc/src/test/resources/imgs/imagem_google.png");
-        System.out.println(image.getFilename());
-
-        screen.wait(image, 10);
-
-        String img = screen.capture().save("/Users/guilhermerogatto/Documents/git/sikulix-tdc/src/test/resources/visualresults", "imagem_google");
-
-        if(screen.has(image)){
-            System.out.println("existe");
-            assertTrue(true);
-        } else {
-            System.out.println("não existe");
-            assertTrue(false);
-        }
-    }
-
-    @Test
-    public void testFunctionalAndVisual() throws InterruptedException, FindFailed {
+        String dirProjeto = System.getProperty("user.dir");
 
         driver.get(baseUrl);
 
@@ -94,27 +53,26 @@ public class TestGoogle {
         if(testContext.contains("functional")){
 
             if(driver.findElements(imagemGoogle).isEmpty()){
-                assertTrue(false);
+                fail();
             } else {
                 assertTrue(true);
             }
 
         } else if (testContext.contains("visual")) {
 
-            screen = new Screen();
-            Pattern image = new Pattern("/Users/guilhermerogatto/Documents/git/sikulix-tdc/src/test/resources/imgs/imagem_google.png");
-            System.out.println(image.getFilename());
+            Screen screen = new Screen();
+            Pattern image = new Pattern(dirProjeto + "/src/test/resources/imgs/imagem_google.png");
 
             screen.wait(image, 10);
 
-            String img = screen.capture().save("/Users/guilhermerogatto/Documents/git/sikulix-tdc/src/test/resources/visualresults", "imagem_google");
+            screen.capture().save(dirProjeto + "/src/test/resources/visualresults", "imagem_google");
 
             if(screen.has(image)){
                 System.out.println("existe");
                 assertTrue(true);
             } else {
                 System.out.println("não existe");
-                assertTrue(false);
+                fail();
             }
         }
 
