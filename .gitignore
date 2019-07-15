@@ -53,7 +53,7 @@ fabric.properties
 .mtj.tmp/
 
 # evidences
-.src/test/resources/visualresults
+.src/test/resources/visualresults/*
 
 # Package Files #
 *.jar
