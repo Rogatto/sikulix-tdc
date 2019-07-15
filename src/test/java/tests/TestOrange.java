@@ -13,7 +13,6 @@ import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
 import pageobject.Login;
 import java.util.concurrent.TimeUnit;
-
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 

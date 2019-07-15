@@ -32,7 +32,7 @@ public class TestOrangeUploadFile {
     }
 
     @Test
-    public void testUploadFile() throws FindFailed {
+    public void testUploadFile() throws FindFailed, InterruptedException {
 
         String dirProjeto = System.getProperty("user.dir");
 
@@ -63,6 +63,8 @@ public class TestOrangeUploadFile {
         screen.click(uploadImage);
 
         driver.findElement(savePhoto).click();
+
+        Thread.sleep(25000);
     }
 
     @After
