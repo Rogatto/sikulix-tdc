@@ -32,7 +32,7 @@ public class TestOrangeUploadFile {
     }
 
     @Test
-    public void testUploadFile() throws FindFailed, InterruptedException {
+    public void testUploadFile() throws FindFailed {
 
         String dirProjeto = System.getProperty("user.dir");
 
@@ -53,7 +53,12 @@ public class TestOrangeUploadFile {
 
         Screen screen = new Screen();
 
+        Pattern desktopImageAuxiliar = new Pattern(dirProjeto + "/src/test/resources/imgs/imagem_desktop2.png");
+        screen.wait(desktopImageAuxiliar, 10);
+        screen.click(desktopImageAuxiliar);
+
         Pattern desktopImage = new Pattern(dirProjeto + "/src/test/resources/imgs/imagem_desktop.png");
+
         screen.wait(desktopImage, 10);
         screen.click(desktopImage);
 
@@ -62,9 +67,12 @@ public class TestOrangeUploadFile {
         screen.capture().save(dirProjeto + "/src/test/resources/visualresults", "upload");
         screen.click(uploadImage);
 
+        Pattern openUpload = new Pattern(dirProjeto + "/src/test/resources/imgs/imagem_openupload.png");
+        screen.wait(openUpload, 10);
+        screen.click(openUpload);
+
         driver.findElement(savePhoto).click();
 
-        Thread.sleep(25000);
     }
 
     @After
