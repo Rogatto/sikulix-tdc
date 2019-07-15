@@ -65,7 +65,7 @@ public class TestGoogle {
 
             screen.wait(image, 10);
 
-            screen.capture().save(dirProjeto + "/src/test/resources/visualresults", "imagem_google");
+            screen.capture().save(dirProjeto + "/src/test/resources/visualreports", "imagem_google");
 
             if(screen.has(image)){
                 System.out.println("existe");

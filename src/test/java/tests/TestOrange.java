@@ -65,7 +65,7 @@ public class TestOrange {
 
             screen.wait(image, 10);
 
-            screen.capture().save(dirProjeto + "/src/test/resources/visualresults", "imagem_orange");
+            screen.capture().save(dirProjeto + "/src/test/resources/visualreports", "imagem_orange");
 
             if(screen.has(image)){
                 System.out.println("existe");

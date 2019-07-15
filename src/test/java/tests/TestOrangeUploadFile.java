@@ -64,7 +64,7 @@ public class TestOrangeUploadFile {
 
         Pattern uploadImage = new Pattern(dirProjeto + "/src/test/resources/imgs/imagem_upload.png");
         screen.wait(uploadImage, 10);
-        screen.capture().save(dirProjeto + "/src/test/resources/visualresults", "upload");
+        screen.capture().save(dirProjeto + "/src/test/resources/visualreports", "upload");
         screen.click(uploadImage);
 
         Pattern openUpload = new Pattern(dirProjeto + "/src/test/resources/imgs/imagem_openupload.png");
