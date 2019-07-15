@@ -22,7 +22,6 @@ public class TestOrangeUploadFile {
     private By firstName = By.id("firstName");
     private By profilePhoto = By.xpath("//*[@id=\"right-side\"]/header/div/nav/div/div/ul[2]/li[1]/img");
     private By photo = By.xpath("//*[@id=\"updatePhotoModal\"]/form/div[1]/div/materializecss-decorator[1]/div/sf-decorator[1]/div/sf-decorator/div/div[1]");
-    private By savePhoto = By.xpath("//*[@id=\"updatePhotoModal\"]/form/div[2]/a[1]");
 
     @Before
     public void setUp(){
@@ -71,7 +70,9 @@ public class TestOrangeUploadFile {
         screen.wait(openUpload, 10);
         screen.click(openUpload);
 
-        driver.findElement(savePhoto).click();
+        Pattern saveImage = new Pattern(dirProjeto + "/src/test/resources/imgs/imagem_save.png");
+        screen.wait(saveImage, 10);
+        screen.click(saveImage);
 
     }
 
