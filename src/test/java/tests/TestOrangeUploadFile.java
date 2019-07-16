@@ -31,7 +31,7 @@ public class TestOrangeUploadFile {
     }
 
     @Test
-    public void testUploadFile() throws FindFailed {
+    public void testUploadFile() throws FindFailed, InterruptedException {
 
         String dirProjeto = System.getProperty("user.dir");
 
@@ -73,6 +73,8 @@ public class TestOrangeUploadFile {
         Pattern saveImage = new Pattern(dirProjeto + "/src/test/resources/imgs/imagem_save.png");
         screen.wait(saveImage, 10);
         screen.click(saveImage);
+
+        Thread.sleep(5000);
 
     }
 
